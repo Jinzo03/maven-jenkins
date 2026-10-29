@@ -1,23 +1,18 @@
 pipeline {
     agent any
 
-    triggers {
-        // Vérifie le dépôt Git toutes les minutes pour détecter un nouveau push
-        pollSCM('* * * * *')
-    }
-
     stages {
-        stage('Récupération du code source') {
+        stage('Récupération du code') {
             steps {
-                // Extrait automatiquement le code depuis le dépôt Git configuré dans le job
+                // Récupère automatiquement la branche configurée dans le job Jenkins
                 checkout scm
             }
         }
 
-        stage('Affichage de la date système') {
+        stage('Nettoyage et Compilation Maven') {
             steps {
-                // Affiche la date système de l'agent d'exécution
-                sh 'date'
+                // Exécute la commande Maven (assurez-vous que Maven est installé et configuré dans Jenkins)
+                sh 'mvn clean compile'
             }
         }
     }
