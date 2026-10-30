@@ -11,7 +11,7 @@ pipeline {
 
         stage('Nettoyage et Compilation Maven') {
             steps {
-                // Exécute la commande Maven (assurez-vous que Maven est installé et configuré dans Jenkins)
+                // Exécute la commande Maven
                 sh 'mvn clean compile'
             }
         }
